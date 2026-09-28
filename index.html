@@ -5,19 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>De Novo Protein Backbone and Loop Generation with Geometric Deep Learning</title>
   
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Charter:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   
-  <!-- KaTeX for math rendering -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
 
-  <!-- 3Dmol.js for WebGL Protein Visualization -->
   <script src="https://3Dmol.org/build/3Dmol-min.js"></script>
-  <!-- Preloaded Generated PDB Structures -->
   <script src="structures_data.js"></script>
 
   <style>
@@ -32,10 +28,8 @@
       --border-dark: #cbd5e1;
       --primary: #2563eb;
       --primary-light: #eff6ff;
-      --accent: #d946ef;
       --cyan: #06b6d4;
       --rose: #e11d48;
-      --green: #059669;
       --font-serif: 'Charter', Georgia, Cambria, serif;
       --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       --font-mono: 'JetBrains Mono', monospace;
@@ -58,7 +52,6 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* Top Academic Header Banner */
     .top-banner {
       background-color: var(--bg-alt);
       border-bottom: 1px solid var(--border);
@@ -76,51 +69,43 @@
       padding: 40px 24px 80px;
     }
 
-    /* Paper Title & Metadata */
     header {
-      margin-bottom: 48px;
+      margin-bottom: 40px;
       text-align: left;
     }
 
     h1.paper-title {
       font-family: var(--font-sans);
-      font-size: 2.5rem;
+      font-size: 2.4rem;
       font-weight: 700;
       line-height: 1.25;
       color: var(--text-dark);
-      margin-bottom: 20px;
+      margin-bottom: 18px;
       letter-spacing: -0.02em;
     }
 
     .authors {
       font-family: var(--font-sans);
-      font-size: 1.05rem;
+      font-size: 1.1rem;
       color: var(--text);
-      margin-bottom: 8px;
+      margin-bottom: 20px;
     }
 
     .authors a {
       color: var(--primary);
       text-decoration: none;
-      font-weight: 500;
+      font-weight: 600;
     }
 
     .authors a:hover {
       text-decoration: underline;
     }
 
-    .affiliations {
-      font-family: var(--font-sans);
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      margin-bottom: 24px;
-    }
-
     .badges-row {
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
-      margin-top: 16px;
+      margin-top: 14px;
       font-family: var(--font-sans);
     }
 
@@ -151,12 +136,11 @@
       fill: currentColor;
     }
 
-    /* Abstract Block */
     .abstract-box {
       background-color: var(--bg-alt);
       border-left: 4px solid var(--primary);
       padding: 24px 28px;
-      margin: 32px 0 48px;
+      margin: 28px 0 44px;
       border-radius: 0 8px 8px 0;
     }
 
@@ -167,7 +151,7 @@
       text-transform: uppercase;
       letter-spacing: 1px;
       color: var(--text-muted);
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
 
     .abstract-text {
@@ -176,13 +160,12 @@
       color: var(--text-dark);
     }
 
-    /* Headings */
     h2 {
       font-family: var(--font-sans);
-      font-size: 1.65rem;
+      font-size: 1.6rem;
       font-weight: 700;
       color: var(--text-dark);
-      margin: 56px 0 20px;
+      margin: 52px 0 18px;
       padding-bottom: 8px;
       border-bottom: 1px solid var(--border);
       letter-spacing: -0.01em;
@@ -190,23 +173,22 @@
 
     h3 {
       font-family: var(--font-sans);
-      font-size: 1.25rem;
+      font-size: 1.2rem;
       font-weight: 600;
       color: var(--text-dark);
-      margin: 32px 0 14px;
+      margin: 28px 0 12px;
     }
 
     p {
-      margin-bottom: 20px;
+      margin-bottom: 18px;
     }
 
-    /* Math and Callouts */
     .math-block {
       background-color: var(--bg-alt);
       border: 1px solid var(--border);
       border-radius: 6px;
       padding: 16px 20px;
-      margin: 24px 0;
+      margin: 22px 0;
       overflow-x: auto;
       text-align: center;
     }
@@ -214,8 +196,8 @@
     .callout {
       border: 1px solid var(--border);
       border-radius: 8px;
-      padding: 18px 22px;
-      margin: 24px 0;
+      padding: 16px 20px;
+      margin: 22px 0;
       font-size: 0.95rem;
       background: var(--bg);
     }
@@ -225,18 +207,12 @@
       background-color: #f8fafc;
     }
 
-    .callout-warning {
-      border-left: 4px solid #f59e0b;
-      background-color: #fffbeb;
-    }
-
-    /* 3D Viewer Container */
     .viewer-card {
       background: var(--bg);
       border: 1px solid var(--border-dark);
       border-radius: 10px;
       overflow: hidden;
-      margin: 36px 0;
+      margin: 32px 0;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
     }
 
@@ -319,15 +295,14 @@
       border-radius: 3px;
     }
 
-    /* Figures & Visualizations */
     figure {
-      margin: 40px 0;
+      margin: 36px 0;
       text-align: center;
     }
 
     figure img {
       width: 100%;
-      max-width: 900px;
+      max-width: 920px;
       border: 1px solid var(--border);
       border-radius: 8px;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
@@ -341,11 +316,10 @@
       line-height: 1.5;
     }
 
-    /* Scientific Tables */
     .table-container {
       width: 100%;
       overflow-x: auto;
-      margin: 28px 0;
+      margin: 26px 0;
       border: 1px solid var(--border);
       border-radius: 8px;
     }
@@ -380,7 +354,6 @@
       background-color: #f8fafc;
     }
 
-    /* Code & BibTeX */
     pre, code {
       font-family: var(--font-mono);
       font-size: 13px;
@@ -419,8 +392,8 @@
     }
 
     footer {
-      margin-top: 80px;
-      padding-top: 32px;
+      margin-top: 70px;
+      padding-top: 28px;
       border-top: 1px solid var(--border);
       font-family: var(--font-sans);
       font-size: 0.88rem;
@@ -437,23 +410,17 @@
 </head>
 <body>
 
-  <!-- Top Banner -->
   <div class="top-banner">
-    Research Report • Computational Structural Biology & Geometric Deep Learning
+    Research Report • De Novo Protein Backbone and Loop Generation
   </div>
 
   <div class="container">
     
-    <!-- Paper Header -->
     <header>
       <h1 class="paper-title">De Novo Protein Backbone and Loop Generation with Geometric Deep Learning</h1>
       
       <div class="authors">
-        <a href="https://github.com/CoderOggy78">Vishwanath Barve</a><sup>1</sup>
-      </div>
-      
-      <div class="affiliations">
-        <sup>1</sup>Machine Learning & Computational Biology Research Group
+        <a href="https://github.com/CoderOggy78" target="_blank">Vishwanath Barve</a> (@CoderOggy78)
       </div>
 
       <div class="badges-row">
@@ -474,90 +441,64 @@
       </div>
     </header>
 
-    <!-- Abstract -->
     <div class="abstract-box">
       <div class="abstract-title">Abstract</div>
       <p class="abstract-text">
-        Computational protein design requires sampling biologically plausible 3D conformations that respect physical translational and rotational symmetries. We introduce an educational, mathematically consistent, pure PyTorch geometric diffusion architecture operating on protein alpha-carbon (\(C\alpha\)) coordinates. Primary focus is given to <strong>conditional structural inpainting of internal loop segments</strong> (5–15 residues) anchored by rigid tertiary contexts, complemented by unconditional coarse-grained trace generation. The model employs an \(SE(3)\)-equivariant graph neural network (EGNN) denoiser and an accelerated DDIM reverse sampler with strict context preservation. Benchmarked on held-out crystallographic structures with zero parent-chain leakage, the model achieves consecutive bond length deviation within \(0.34\text{ \AA}\) of ideal peptide spacing (\(3.81\text{ \AA}\)), maintains a low non-bonded steric clash rate (\(3.32\%\)), and samples structurally diverse ensembles (\(3.40\text{ \AA}\) pairwise diversity). We also formalize the closed-loop computational self-consistency paradigm (\(scRMSD\)) bridging backbone diffusion, inverse folding via ProteinMPNN, and structure prediction via ESMFold.
+        Computational protein design requires sampling 3D conformations that respect physical translational and rotational symmetries. We introduce an educational, mathematically consistent, pure PyTorch geometric diffusion architecture operating on protein alpha-carbon (\(C\alpha\)) coordinates. Primary focus is given to <strong>conditional structural inpainting of internal loop segments</strong> (5–15 residues) anchored by rigid tertiary contexts, complemented by unconditional coarse-grained trace generation. The model employs an \(SE(3)\)-equivariant graph neural network (EGNN) denoiser and an accelerated DDIM reverse sampler with strict context preservation. Benchmarked on held-out crystallographic structures with zero parent-chain leakage, the model achieves consecutive bond length deviation within \(0.34\text{ \AA}\) of ideal peptide spacing (\(3.81\text{ \AA}\)), maintains a low non-bonded steric clash rate (\(3.32\%\)), and samples structurally diverse ensembles (\(3.40\text{ \AA}\) pairwise diversity). We also formalize the closed-loop computational self-consistency paradigm (\(scRMSD\)) bridging backbone diffusion, inverse folding via ProteinMPNN, and structure prediction via ESMFold.
       </p>
     </div>
 
-    <!-- Section 1 -->
     <section id="introduction">
-      <h2>1. Introduction & Scientific Context</h2>
+      <h2>1. Introduction & Methodology</h2>
       <p>
-        The predictive revolution in structural biology—epitomized by AlphaFold2 and ESMFold—has predominantly addressed the forward folding problem: predicting native tertiary coordinates from primary amino acid sequences. However, therapeutic protein engineering, enzyme design, and epitope grafting require solving the inverse generative problem: <em>sampling structurally novel, physically viable 3D backbones de novo</em>.
+        Generative deep learning on protein geometry requires architectures that respect the symmetries of 3D physical space: global translations and rotations in \(SE(3) = SO(3) \ltimes \mathbb{R}^3\).
       </p>
+
+      <figure>
+        <img src="figures/architecture_diagram.png" alt="Architecture Diagram">
+        <figcaption>
+          <strong>Figure 1: Complete Computational Architecture.</strong> Workflow starting from curated high-resolution structural inputs to context-only graph construction, pure PyTorch EGNN equivariant denoising, accelerated DDIM reverse sampling with exact context clamping, and physical geometry evaluation.
+        </figcaption>
+      </figure>
+
       <p>
-        Generative modeling on protein geometry presents unique mathematical challenges. Unlike image pixels defined on Euclidean grids, macromolecules exist in three-dimensional physical space, where predictions must be strictly equivariant to the Special Euclidean group \(SE(3) = SO(3) \ltimes \mathbb{R}^3\). Furthermore, natural proteins are intrinsically chiral, composed exclusively of L-amino acids that assemble into right-handed \(\alpha\)-helices and pleated \(\beta\)-sheets.
+        We organize the research into two complementary tracks:
       </p>
-      
-      <div class="callout callout-info">
-        <strong>Core Scientific Scope:</strong> This report strictly distinguishes coarse-grained \(C\alpha\) traces from complete all-atom protein structures. Demonstrating loop closure on \(C\alpha\) coordinates proves algorithmic and geometric correctness, but does not substitute for downstream all-atom sidechain packing or experimental in vitro validation.
-      </div>
+      <ul style="padding-left: 24px; margin-bottom: 20px;">
+        <li><strong>Track A (Model Trained from Scratch):</strong> A compact EGNN denoiser operating on \(C\alpha\) coordinates with conditional loop inpainting as the primary task.</li>
+        <li><strong>Track B (Pretrained Generation & Self-Consistency Ecosystem):</strong> Analysis of industry-standard tools (RFdiffusion, FrameDiPT, ProteinMPNN, ESMFold) evaluated via computational self-consistency (\(scRMSD < 2.0\text{ \AA}\)).</li>
+      </ul>
     </section>
 
-    <!-- Section 2 -->
     <section id="geometry-foundations">
-      <h2>2. Mathematical Geometry & Equivariance</h2>
+      <h2>2. Mathematical Foundations & Equivariance</h2>
       <p>
-        Let a protein chain of length \(N\) be parameterized by its alpha-carbon coordinates \(\mathbf{X} = [\mathbf{x}_1, \dots, \mathbf{x}_N]^T \in \mathbb{R}^{N \times 3}\). In standard trans peptide geometry, the distance between consecutive \(C\alpha\) atoms is constrained by covalent stereochemistry:
-      </p>
-      <div class="math-block">
-        $$\|\mathbf{x}_{i+1} - \mathbf{x}_i\| \approx 3.81\text{ \AA}$$
-      </div>
-      <p>
-        Under an arbitrary global rigid body transformation consisting of rotation matrix \(\mathbf{R} \in SO(3)\) and translation vector \(\mathbf{t} \in \mathbb{R}^3\), coordinates transform as \(\mathbf{X}' = \mathbf{R}\mathbf{X} + \mathbf{t}\). A coordinate-predicting neural network \(f\) must satisfy:
+        Let a protein chain be represented by \(C\alpha\) coordinates \(\mathbf{X} \in \mathbb{R}^{N \times 3}\). Under rotation matrix \(\mathbf{R} \in SO(3)\) and translation vector \(\mathbf{t} \in \mathbb{R}^3\), coordinates transform as \(\mathbf{X}' = \mathbf{R}\mathbf{X} + \mathbf{t}\). A coordinate-predicting neural network \(f\) satisfies:
       </p>
       <div class="math-block">
         $$f(\mathbf{R}\mathbf{X} + \mathbf{t}) = \mathbf{R}f(\mathbf{X}) + \mathbf{t}$$
       </div>
       <p>
-        In contrast, displacement vectors (such as diffusion score or noise predictions \(\hat{\mathbf{\epsilon}}_\theta\)) are translation-invariant but rotate equivariantly:
+        Displacement vectors and predicted noise \(\hat{\mathbf{\epsilon}}_\theta\) are translation-invariant but rotate equivariantly:
       </p>
       <div class="math-block">
         $$\hat{\mathbf{\epsilon}}_\theta(\mathbf{R}\mathbf{X} + \mathbf{t}) = \mathbf{R}\hat{\mathbf{\epsilon}}_\theta(\mathbf{X})$$
       </div>
 
-      <h3>The Chirality Problem: \(E(3)\) vs. \(SE(3)\)</h3>
       <p>
-        Standard Euclidean graph neural networks that compute messages purely from pairwise Euclidean distances \(d_{ij} = \|\mathbf{x}_i - \mathbf{x}_j\|\) are invariant under spatial <em>reflections</em> (\(\det(\mathbf{R}) = -1\)), placing them in the orthogonal group \(O(3)\). Because reflection symmetry maps L-amino acids to unphysical D-amino acids, a pure distance-based model cannot distinguish between biologically native right-handed helices and their inverted mirror images. Resolving this requires incorporating chiral pseudoscalars or local residue-fixed reference frames.
+        In the EGNN layers, pairwise squared distances \(d_{ij}^2 = \|\mathbf{x}_i - \mathbf{x}_j\|^2\) remain invariant under \(SE(3)\). Invariant scalar messages \(m_{ij}\) scale relative difference vectors \((\mathbf{x}_i - \mathbf{x}_j)\), ensuring that the accumulated displacement transforms as a true rotation-equivariant vector.
       </p>
     </section>
 
-    <!-- Section 3 -->
-    <section id="architecture">
-      <h2>3. Equivariant Graph Neural Network (EGNN) Denoiser</h2>
-      <p>
-        We implement an Equivariant Graph Neural Network in pure PyTorch. For each layer \(l\), scalar node features \(h_i^{(l)} \in \mathbb{R}^d\) and spatial coordinates \(\mathbf{x}_i^{(l)} \in \mathbb{R}^3\) are updated via:
-      </p>
-      <div class="math-block">
-        $$m_{ij} = \phi_e\left(h_i^{(l)}, h_j^{(l)}, \|\mathbf{x}_i^{(l)} - \mathbf{x}_j^{(l)}\|^2, e_{ij}\right)$$
-      </div>
-      <div class="math-block">
-        $$\mathbf{x}_i^{(l+1)} = \mathbf{x}_i^{(l)} + \frac{1}{|\mathcal{N}(i)|} \sum_{j \in \mathcal{N}(i)} \left(\mathbf{x}_i^{(l)} - \mathbf{x}_j^{(l)}\right) \phi_x(m_{ij})$$
-      </div>
-      <div class="math-block">
-        $$h_i^{(l+1)} = \phi_h\left(h_i^{(l)}, \sum_{j \in \mathcal{N}(i)} m_{ij}\right)$$
-      </div>
-      <p>
-        Because the displacement factor \(\phi_x(m_{ij})\) is a strictly invariant scalar and \((\mathbf{x}_i - \mathbf{x}_j)\) rotates as an equivariant vector, the final noise prediction head satisfies:
-      </p>
-      <div class="math-block">
-        $$\hat{\mathbf{\epsilon}}_\theta(\mathbf{x}_t, t) = \left(\mathbf{x}_i^{(L)} - \mathbf{x}_{t, i}\right) \cdot \text{Softplus}\left(\text{Linear}(h_i^{(L)})\right)$$
-      </div>
-    </section>
-
-    <!-- Section 4: Interactive 3D Viewer -->
     <section id="interactive-viewer">
-      <h2>4. Interactive 3D Molecular Viewer</h2>
+      <h2>3. Interactive 3D Molecular Viewer</h2>
       <p>
-        Explore the de novo inpainting results directly in WebGL. The viewer renders real crystallographic context coordinates together with the ground truth loop and the equivariant diffusion model's generated loop candidate.
+        WebGL interactive visualization rendered via <code>3Dmol.js</code>. Inspect the fixed crystallographic context, the native crystallographic target loop, and the de novo generated loop candidate.
       </p>
 
       <div class="viewer-card">
         <div class="viewer-header">
-          <div class="viewer-title">3D Structure: PDB 2CI2 (Chymotrypsin Inhibitor 2)</div>
+          <div class="viewer-title">PDB Structure: 2CI2 (Chymotrypsin Inhibitor 2)</div>
           <div class="viewer-controls">
             <button class="viewer-btn active" id="btn-case-0" onclick="loadCase('2CI2_ex0_sample0')">5-Res Loop</button>
             <button class="viewer-btn" id="btn-case-5" onclick="loadCase('2CI2_ex5_sample0')">8-Res Loop</button>
@@ -586,46 +527,44 @@
       </div>
     </section>
 
-    <!-- Section 5: Trajectory Analysis -->
     <section id="trajectory-analysis">
-      <h2>5. Reverse Sampling Trajectory & Loop Coalescence</h2>
+      <h2>4. Trajectory Analysis & Physical Geometry</h2>
       <p>
-        Conditioned on the visible context, reverse diffusion proceeds via accelerated DDIM sampling (\(S=20\) steps). The masked coordinates coalesce from high-variance Gaussian noise into an ordered peptide loop:
+        Reverse diffusion samples the missing loop while holding observed context coordinates fixed at every step.
       </p>
 
       <figure>
         <img src="figures/denoising_trajectory_slices.png" alt="Denoising trajectory slices">
         <figcaption>
-          <strong>Figure 1: Reverse Diffusion Snapshots (\(t=50 \to 0\)).</strong> 2D coordinate projections across 6 representative sampling intervals. Gray points: Fixed context anchors. Magenta points and connecting chord: Generated loop coordinates.
+          <strong>Figure 2: Reverse Diffusion Snapshots (\(t=50 \to 0\)).</strong> 2D coordinate projections across 6 representative sampling intervals. Gray points: Fixed context anchors. Magenta points and chord: Generated loop coordinates coalescing into an anchored conformation.
         </figcaption>
       </figure>
 
       <figure>
         <img src="figures/bond_distribution.png" alt="Sequential Bond Distribution">
         <figcaption>
-          <strong>Figure 2: Consecutive \(C\alpha-C\alpha\) Distance Distribution.</strong> Histogram and kernel density estimate across generated loops. The distribution centers sharply around the ideal trans peptide bond length of \(3.81\text{ \AA}\) (dashed red line).
+          <strong>Figure 3: Consecutive \(C\alpha-C\alpha\) Distance Distribution.</strong> Histogram and kernel density estimate across generated loops, centering closely around the ideal trans peptide bond length of \(3.81\text{ \AA}\) (dashed red line).
         </figcaption>
       </figure>
     </section>
 
-    <!-- Section 6: Benchmark Results -->
     <section id="benchmark-results">
-      <h2>6. Empirical Benchmarks & Quantitative Evaluation</h2>
+      <h2>5. Empirical Benchmarks & Quantitative Evaluation</h2>
       <p>
-        The model was evaluated on 10 held-out internal loop inpainting segments from parent protein <code>2CI2</code>. All inputs were centered using <em>observed context atoms only</em>, preventing information leakage.
+        Evaluated on 10 held-out internal loop inpainting segments from parent protein <code>2CI2</code>. Inputs were centered using <em>observed context atoms only</em>, preventing information leakage.
       </p>
 
       <figure>
         <img src="figures/training_curves.png" alt="Training dynamics">
         <figcaption>
-          <strong>Figure 3: Training & Validation Dynamics.</strong> (Left) Total loss over optimization steps. (Right) Decomposed geometric loss components: Denoising MSE, \(C\alpha-C\alpha\) bond penalty, anchor junction continuity, and steric clash avoidance.
+          <strong>Figure 4: Training & Validation Dynamics.</strong> (Left) Total loss over optimization steps. (Right) Decomposed loss components: Denoising MSE, \(C\alpha-C\alpha\) bond penalty, anchor junction continuity, and steric clash avoidance.
         </figcaption>
       </figure>
 
       <figure>
         <img src="figures/benchmark_comparison.png" alt="Benchmark comparison bar chart">
         <figcaption>
-          <strong>Figure 4: Loop Reconstruction Error Comparison.</strong> Context-aligned RMSD (\(\text{\AA}\)) comparing the Equivariant Diffusion model against a deterministic Linear Anchor Chord and a Constrained Random Walk.
+          <strong>Figure 5: Loop Reconstruction Error Comparison.</strong> Context-aligned RMSD (\(\text{\AA}\)) comparing the Equivariant Diffusion model against a deterministic Linear Anchor Chord and a Constrained Random Walk.
         </figcaption>
       </figure>
 
@@ -771,60 +710,53 @@
       </div>
     </section>
 
-    <!-- Section 7: Track B Pipeline -->
     <section id="track-b">
-      <h2>7. Track B: The Computational Self-Consistency Paradigm</h2>
+      <h2>6. Track B: Pretrained Generation & Self-Consistency</h2>
       <p>
-        In modern structural biology, in silico backbone generation is validated through the <em>Analysis-by-Synthesis</em> loop:
+        In modern computational structural biology, de novo backbones are validated through the <em>Analysis-by-Synthesis</em> loop:
       </p>
       <div class="math-block">
         $$\text{Backbone Sample } \mathbf{X} \xrightarrow{\text{ProteinMPNN}} \text{Sequence } \mathbf{S} \xrightarrow{\text{ESMFold}} \text{Refolded } \mathbf{X}_{\text{pred}} \implies scRMSD = \text{RMSD}(\mathbf{X}, \mathbf{X}_{\text{pred}}) < 2.0\text{ \AA}$$
       </div>
       <p>
-        <strong>Implementation Constraint:</strong> Standard ProteinMPNN strictly requires complete backbone heavy atoms (\(N, C\alpha, C, O\)). Providing coarse-grained \(C\alpha\) traces requires either a dedicated \(C\alpha\)-conditioned checkpoint or prior full-backbone reconstruction (e.g., BBQ or Pulchra). High self-consistency proves that the structural generator and inverse-folding network share a compatible prior, but does not guarantee in vitro solubility or binding.
+        Standard ProteinMPNN strictly requires complete backbone heavy atoms (\(N, C\alpha, C, O\)). Providing coarse-grained \(C\alpha\) traces requires either a dedicated \(C\alpha\) checkpoint or prior all-atom reconstruction (e.g., BBQ or Pulchra).
       </p>
     </section>
 
-    <!-- Section 8: Discussion -->
     <section id="discussion">
-      <h2>8. Discussion & Critical Limitations</h2>
+      <h2>7. Limitations & Technical Notes</h2>
       <ul style="padding-left: 24px; margin-bottom: 24px;">
-        <li style="margin-bottom: 12px;"><strong>Coarse-Grained Geometry:</strong> The model generates \(C\alpha\) traces. Without full backbone atoms (\(N, C, O\)) and sidechains, these coordinates cannot be directly parameterized in molecular dynamics engines (AMBER/CHARMM) without reconstruction.</li>
-        <li style="margin-bottom: 12px;"><strong>Reflection Equivariance:</strong> Because the pairwise distance feature space is invariant under reflections, the educational model operates in \(O(3)\) rather than true \(SE(3)\). Full stereochemical fidelity requires chiral reference frames.</li>
-        <li style="margin-bottom: 12px;"><strong>Ground Truth Alignment:</strong> Evaluated loops were aligned strictly via fixed context atoms. Aligning loops independently masks boundary placement errors and yields artificially deflated RMSDs.</li>
+        <li style="margin-bottom: 10px;"><strong>Coarse-Grained Geometry:</strong> The model generates \(C\alpha\) traces. Downstream molecular dynamics or all-atom parameterization requires sidechain reconstruction.</li>
+        <li style="margin-bottom: 10px;"><strong>Reflection Invariance:</strong> Distance-based EGNN operates in \(O(3)\). Distinguishing L-amino from D-amino enantiomers requires chiral reference frames.</li>
+        <li style="margin-bottom: 10px;"><strong>Superposition Alignment:</strong> Evaluated loops were aligned strictly via fixed context atoms. Aligning loops independently masks boundary placement errors.</li>
       </ul>
     </section>
 
-    <!-- Section 9: Citation -->
     <section id="citation">
-      <h2>9. Citation & BibTeX</h2>
+      <h2>8. Citation & Reference</h2>
       <div class="bibtex-wrapper">
         <button class="copy-btn" onclick="copyBibtex()">Copy BibTeX</button>
-        <pre id="bibtex-code">@article{barve2026protein_diffusion,
+        <pre id="bibtex-code">@software{barve2026protein_diffusion,
   title   = {De Novo Protein Backbone and Loop Generation with Geometric Deep Learning},
   author  = {Barve, Vishwanath},
-  journal = {GitHub Pages Research Reports},
   year    = {2026},
   url     = {https://coderoggy78.github.io/protein-backbone-diffusion/}
 }</pre>
       </div>
     </section>
 
-    <!-- Footer -->
     <footer>
-      <p>© 2026 Vishwanath Barve • Built with PyTorch, py3Dmol, and KaTeX • Hosted on GitHub Pages</p>
+      <p>© 2026 Vishwanath Barve (@CoderOggy78) • Pure PyTorch SE(3) Equivariant Diffusion</p>
     </footer>
 
   </div>
 
-  <!-- Interactive 3D Viewer Script -->
   <script>
     let viewer = null;
     let isSpinning = false;
     let currentCase = '2CI2_ex0_sample0';
 
     document.addEventListener("DOMContentLoaded", function() {
-      // Render KaTeX math
       if (typeof renderMathInElement !== 'undefined') {
         renderMathInElement(document.body, {
           delimiters: [
@@ -834,7 +766,6 @@
         });
       }
 
-      // Initialize 3Dmol viewer
       const element = document.getElementById('viewer-container');
       if (element && typeof $3Dmol !== 'undefined') {
         viewer = $3Dmol.createViewer(element, { backgroundColor: 'white' });
@@ -846,7 +777,6 @@
       if (!viewer || !window.STRUCTURES || !window.STRUCTURES[caseKey]) return;
       currentCase = caseKey;
 
-      // Update button styles
       document.querySelectorAll('.viewer-controls .viewer-btn').forEach(btn => btn.classList.remove('active'));
       if (caseKey.includes('ex0')) document.getElementById('btn-case-0').classList.add('active');
       if (caseKey.includes('ex5')) document.getElementById('btn-case-5').classList.add('active');
@@ -855,19 +785,15 @@
       viewer.clear();
       const pdbData = window.STRUCTURES[caseKey];
 
-      // Parse and split context vs loop residues
-      // Residues 6-10 (for 5-res), 6-13 (for 8-res), 6-16 (for 11-res) are loop
       let loopEnd = 10;
       if (caseKey.includes('ex5')) loopEnd = 13;
       if (caseKey.includes('ex9')) loopEnd = 16;
 
       viewer.addModel(pdbData, "pdb");
 
-      // Context style: Slate Gray Trace
       viewer.setStyle({ resi: [1, 2, 3, 4, 5] }, { stick: { color: '#64748b', radius: 0.28 } });
       viewer.setStyle({ resi: Array.from({length: 60}, (_, i) => i + loopEnd + 1) }, { stick: { color: '#64748b', radius: 0.28 } });
 
-      // Generated Loop style: Coral/Magenta
       const loopResis = Array.from({ length: loopEnd - 5 }, (_, i) => i + 6);
       viewer.setStyle({ resi: loopResis }, { stick: { color: '#f43f5e', radius: 0.45 } });
 
