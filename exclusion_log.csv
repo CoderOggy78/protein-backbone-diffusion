@@ -1,0 +1,3 @@
+pdb_id,chain_id,reason
+1CRN,A,Chain length 46 < min 50
+1VII,A,Chain length 36 < min 50

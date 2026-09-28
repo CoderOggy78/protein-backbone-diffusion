@@ -1,0 +1,73 @@
+REMARK 250
+REMARK 250 COARSE-GRAINED C-ALPHA TRACE GENERATED VIA GEOMETRIC DIFFUSION
+REMARK 250 EXPERIMENTAL NOTE: ALL-ATOM TOPOLOGY AND SIDECHAINS ARE OMITTED.
+REMARK 250 TEST CASE: 2CI2
+REMARK 250 CONTEXT-ALIGNED LOOP RMSD: 11.34 ANGSTROMS
+REMARK 250 JUNCTION ERROR: 5.85 ANGSTROMS
+ATOM      1  CA  GLY A   1       5.593 -16.312  -6.840  1.00  0.00           C  
+ATOM      2  CA  GLY A   2       4.445 -12.985  -5.400  1.00  0.00           C  
+ATOM      3  CA  GLY A   3       1.526 -11.470  -3.504  1.00  0.00           C  
+ATOM      4  CA  GLY A   4       1.075  -7.990  -4.933  1.00  0.00           C  
+ATOM      5  CA  GLY A   5      -2.521  -7.084  -4.132  1.00  0.00           C  
+ATOM      6  CA  GLY A   6      -1.877   0.828  -0.374  1.00  0.00           C  
+ATOM      7  CA  GLY A   7      -1.510  -3.494   2.853  1.00  0.00           C  
+ATOM      8  CA  GLY A   8       0.923  -0.972   0.749  1.00  0.00           C  
+ATOM      9  CA  GLY A   9       1.064  -0.458   0.619  1.00  0.00           C  
+ATOM     10  CA  GLY A  10      -1.276  -0.996  -0.032  1.00  0.00           C  
+ATOM     11  CA  GLY A  11      -0.099   0.413   0.064  1.00  0.00           C  
+ATOM     12  CA  GLY A  12      -2.568  -2.222  -0.142  1.00  0.00           C  
+ATOM     13  CA  GLY A  13       0.282  -2.170   1.318  1.00  0.00           C  
+ATOM     14  CA  GLY A  14       1.975   0.809   0.220  1.00  0.00           C  
+ATOM     15  CA  GLY A  15       3.418  -0.973   2.098  1.00  0.00           C  
+ATOM     16  CA  GLY A  16       1.957   0.759  -0.372  1.00  0.00           C  
+ATOM     17  CA  GLY A  17      -4.018  -3.696   7.090  1.00  0.00           C  
+ATOM     18  CA  GLY A  18      -0.357  -3.197   8.144  1.00  0.00           C  
+ATOM     19  CA  GLY A  19      -0.474  -6.414  10.146  1.00  0.00           C  
+ATOM     20  CA  GLY A  20      -1.715  -8.465   7.177  1.00  0.00           C  
+ATOM     21  CA  GLY A  21       0.631  -6.985   4.594  1.00  0.00           C  
+ATOM     22  CA  GLY A  22       3.663  -7.463   6.855  1.00  0.00           C  
+ATOM     23  CA  GLY A  23       2.572 -11.071   7.336  1.00  0.00           C  
+ATOM     24  CA  GLY A  24       2.610 -11.629   3.561  1.00  0.00           C  
+ATOM     25  CA  GLY A  25       5.443  -9.234   2.677  1.00  0.00           C  
+ATOM     26  CA  GLY A  26       7.864  -8.900   5.595  1.00  0.00           C  
+ATOM     27  CA  GLY A  27      10.035  -6.375   3.693  1.00  0.00           C  
+ATOM     28  CA  GLY A  28       7.161  -4.056   2.722  1.00  0.00           C  
+ATOM     29  CA  GLY A  29       7.615  -0.325   3.192  1.00  0.00           C  
+ATOM     30  CA  GLY A  30       4.087   0.879   4.043  1.00  0.00           C  
+ATOM     31  CA  GLY A  31       3.031   4.325   2.810  1.00  0.00           C  
+ATOM     32  CA  GLY A  32      -0.298   5.871   3.877  1.00  0.00           C  
+ATOM     33  CA  GLY A  33      -1.885   8.468   1.568  1.00  0.00           C  
+ATOM     34  CA  GLY A  34      -5.331  10.075   1.279  1.00  0.00           C  
+ATOM     35  CA  GLY A  35      -7.481   8.902  -1.686  1.00  0.00           C  
+ATOM     36  CA  GLY A  36      -7.069  11.232  -4.679  1.00  0.00           C  
+ATOM     37  CA  GLY A  37      -3.293  11.730  -4.217  1.00  0.00           C  
+ATOM     38  CA  GLY A  38      -1.180  11.935  -7.374  1.00  0.00           C  
+ATOM     39  CA  GLY A  39       2.060   9.980  -6.947  1.00  0.00           C  
+ATOM     40  CA  GLY A  40       5.354   9.928  -8.868  1.00  0.00           C  
+ATOM     41  CA  GLY A  41       5.471   7.331 -11.669  1.00  0.00           C  
+ATOM     42  CA  GLY A  42       8.311   5.406  -9.965  1.00  0.00           C  
+ATOM     43  CA  GLY A  43       7.932   1.638  -9.408  1.00  0.00           C  
+ATOM     44  CA  GLY A  44       9.220   0.110  -6.139  1.00  0.00           C  
+ATOM     45  CA  GLY A  45       8.875  -3.603  -5.435  1.00  0.00           C  
+ATOM     46  CA  GLY A  46       9.181  -3.297  -1.629  1.00  0.00           C  
+ATOM     47  CA  GLY A  47       6.599  -0.555  -1.297  1.00  0.00           C  
+ATOM     48  CA  GLY A  48       2.921  -0.801  -0.359  1.00  0.00           C  
+ATOM     49  CA  GLY A  49       0.811   2.365  -0.585  1.00  0.00           C  
+ATOM     50  CA  GLY A  50      -2.438   2.428   1.426  1.00  0.00           C  
+ATOM     51  CA  GLY A  51      -5.065   4.883   0.094  1.00  0.00           C  
+ATOM     52  CA  GLY A  52      -7.212   5.947   3.042  1.00  0.00           C  
+ATOM     53  CA  GLY A  53     -10.557   7.647   3.641  1.00  0.00           C  
+ATOM     54  CA  GLY A  54     -11.416  10.316   6.242  1.00  0.00           C  
+ATOM     55  CA  GLY A  55     -11.520   7.699   8.999  1.00  0.00           C  
+ATOM     56  CA  GLY A  56      -8.273   6.000   7.948  1.00  0.00           C  
+ATOM     57  CA  GLY A  57      -9.917   2.891   6.416  1.00  0.00           C  
+ATOM     58  CA  GLY A  58      -8.504   1.321   3.229  1.00  0.00           C  
+ATOM     59  CA  GLY A  59     -10.533   2.787   0.371  1.00  0.00           C  
+ATOM     60  CA  GLY A  60      -8.916   0.991  -2.581  1.00  0.00           C  
+ATOM     61  CA  GLY A  61      -7.168  -2.357  -3.076  1.00  0.00           C  
+ATOM     62  CA  GLY A  62      -3.605  -2.117  -1.751  1.00  0.00           C  
+ATOM     63  CA  GLY A  63      -0.924  -3.069  -4.309  1.00  0.00           C  
+ATOM     64  CA  GLY A  64       2.871  -3.242  -4.610  1.00  0.00           C  
+ATOM     65  CA  GLY A  65       4.707  -0.420  -6.381  1.00  0.00           C  
+TER
+END
